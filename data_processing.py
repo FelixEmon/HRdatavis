@@ -216,13 +216,13 @@ def calculate_channel_metrics(df_filtered):
     lietou_details, lietou_pie_labels, lietou_pie_values = [], [], []
     if total_lietou_hires > 0:
         source_counts = lietou_df['付费渠道_c'].value_counts()
-        top_3 = source_counts.head(3)
-        for source, count in top_3.items():
+        top_5 = source_counts.head(5)
+        for source, count in top_5.items():
             source_perc = (count / total_lietou_hires) * 100
             lietou_details.append(f"- {source}: {source_perc:.1f}%")
             lietou_pie_labels.append(source)
             lietou_pie_values.append(count)
-        other_count = total_lietou_hires - top_3.sum()
+        other_count = total_lietou_hires - top_5.sum()
         if other_count > 0:
             other_perc = (other_count / total_lietou_hires) * 100
             lietou_details.append(f"- 其他: {other_perc:.1f}%")
